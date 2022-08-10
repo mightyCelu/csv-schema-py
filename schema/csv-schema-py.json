@@ -1,0 +1,152 @@
+{
+  "$id": "https://example.com/address.schema.jsonTODO",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The description of a CSV schema.",
+  "definitions": {
+    "type": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "enum",
+          "description": "The column type."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the column."
+        },
+        "required": {
+          "type": "bool",
+          "description": "Whether or not the column is required in the file."
+        },
+        "null_or_empty": {
+          "type": "bool",
+          "description": "Whether or not the value can be null (missing) or an empty string."
+        }
+      }
+    },
+    "string": {
+      "type": "object",
+      "allOf": [{ "$ref": "#/definitions/type" }],
+      "properties": {
+        "type": {},
+        "name": {},
+        "required": {},
+        "null_or_empty": {},
+        "regex": {
+          "type": "string",
+          "description": "Regular expression to validate the column value."
+        },
+        "min": {
+          "type": "number",
+          "description": "The minimum length of the string. null for no limit."
+        },
+        "max": {
+          "type": "number",
+          "description": "The maximum length of the string. null for no limit."
+        }
+      },
+      "required": ["type", "name", "required", "null_or_empty", "regex", "min", "max"],
+      "additionalProperties": false
+    },
+    "integer": {
+      "type": "object",
+      "allOf": [{ "$ref": "#/definitions/type" }],
+      "properties": {
+        "type": {},
+        "name": {},
+        "required": {},
+        "null_or_empty": {},
+        "regex": {
+          "type": "string",
+          "description": "Regular expression to validate the column value."
+        },
+        "min": {
+          "type": "number",
+          "description": "The minimum value. null for no limit."
+        },
+        "max": {
+          "type": "number",
+          "description": "The maximum value. null for no limit."
+        }
+      },
+      "required": ["type", "name", "required", "null_or_empty", "regex", "min", "max"],
+      "additionalProperties": false
+    },
+    "decimal": {
+      "type": "object",
+      "allOf": [{ "$ref": "#/definitions/type" }],
+      "properties": {
+        "type": {},
+        "name": {},
+        "required": {},
+        "null_or_empty": {},
+        "min": {
+          "type": "number",
+          "description": "The minimum value. null for no limit."
+        },
+        "max": {
+          "type": "number",
+          "description": "The maximum value. null for no limit."
+        },
+        "precision": {
+          "type": "number",
+          "description": "The decimal point precision."
+        }
+      },
+      "required": ["type", "name", "required", "null_or_empty", "min", "max", "precision"],
+      "additionalProperties": false
+    },
+    "enum": {
+      "type": "object",
+      "allOf": [{ "$ref": "#/definitions/type" }],
+      "properties": {
+        "type": {},
+        "name": {},
+        "required": {},
+        "null_or_empty": {},
+        "values": {
+          "type": "array",
+          "description": "Fixed set of constants.",
+          "items": {"TODO"}
+        }
+      },
+      "required": ["type", "name", "required", "null_or_empty", "values"],
+      "additionalProperties": false
+    }
+  },
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The name of the schema."
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the schema."
+    },
+    "filename": {
+      "type": "object",
+      "description": "Properties for the name of the CSV filename to validate.",
+      "properties": {
+        "regex": {
+          "type": "string",
+          "description": "Regular expression to validate the name of the CSV file being validated."
+        }
+      }
+    },
+    "columns": {
+      "type": "array",
+      "description": "List of column definitions.",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          { "$ref": "#/definitions/string" },
+          { "$ref": "#/definitions/integer" },
+          { "$ref": "#/definitions/decimal" },
+          { "$ref": "#/definitions/enum" }
+        ]
+      }
+    }
+  },
+  "required": ["TODO"]
+}
