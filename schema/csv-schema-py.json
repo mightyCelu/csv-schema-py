@@ -35,8 +35,7 @@
         "null_or_empty": {},
         "regex": {
           "type": "string",
-          "description": "Regular expression to validate the column value.",
-          "TODO": "ensure regex"
+          "description": "Regular expression to validate the column value."
         },
         "min": {
           "type": "number",
@@ -61,8 +60,7 @@
         "null_or_empty": {},
         "regex": {
           "type": "string",
-          "description": "Regular expression to validate the column value.",
-          "TODO": "ensure regex"
+          "description": "Regular expression to validate the column value."
         },
         "min": {
           "type": "number",
@@ -87,8 +85,7 @@
         "null_or_empty": {},
         "regex": {
           "type": "string",
-          "description": "Regular expression to validate the column value.",
-          "TODO": "ensure regex"
+          "description": "Regular expression to validate the column value."
         },
         "min": {
           "type": "number",
@@ -146,8 +143,7 @@
       "properties": {
         "regex": {
           "type": "string",
-          "description": "Regular expression to validate the name of the CSV file being validated.",
-          "TODO": "ensure regex (not in original)"
+          "description": "Regular expression to validate the name of the CSV file being validated."
         }
       }
     },
