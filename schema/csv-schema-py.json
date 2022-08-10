@@ -48,7 +48,7 @@
           "minimum": { "$data": "1/min" }
         }
       },
-      "required": ["type", "name", "required", "null_or_empty", "regex"],
+      "required": ["type", "name", "required", "null_or_empty"],
       "additionalProperties": false
     },
     "integer": {
@@ -74,7 +74,7 @@
           "minimum": { "$data": "1/min" }
         }
       },
-      "required": ["type", "name", "required", "null_or_empty", "regex"],
+      "required": ["type", "name", "required", "null_or_empty"],
       "additionalProperties": false
     },
     "decimal": {
@@ -166,5 +166,5 @@
       "minItems": 1
     }
   },
-  "required": ["TODO"]
+  "required": ["name", "columns"]
 }
