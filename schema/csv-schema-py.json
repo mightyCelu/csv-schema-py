@@ -119,7 +119,10 @@
         "values": {
           "type": "array",
           "description": "Fixed set of constants.",
-          "items": {"TODO"},
+          "oneOf": [
+            { "items": { "type": "number" } },
+            { "items": { "type": "string" } }
+          ],
           "minItems": 1
         }
       },
