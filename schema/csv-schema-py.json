@@ -9,7 +9,7 @@
         "type": {
           "type": "string",
           "description": "The column type.",
-	  "enum": ["string", "integer", "decimal", "enum"]
+          "enum": ["string", "integer", "decimal", "enum"]
         },
         "name": {
           "type": "string",
@@ -36,7 +36,7 @@
         "regex": {
           "type": "string",
           "description": "Regular expression to validate the column value.",
-	  "TODO": "ensure regex"
+          "TODO": "ensure regex"
         },
         "min": {
           "type": "number",
@@ -44,12 +44,12 @@
         },
         "max": {
           "type": "number",
-          "description": "The maximum length of the string. null for no limit."
+          "description": "The maximum length of the string. null for no limit.",
+          "minimum": { "$data": "1/min" }
         }
       },
       "required": ["type", "name", "required", "null_or_empty", "regex"],
-      "additionalProperties": false,
-      "TODO": "min <= max"
+      "additionalProperties": false
     },
     "integer": {
       "type": "object",
@@ -62,7 +62,7 @@
         "regex": {
           "type": "string",
           "description": "Regular expression to validate the column value.",
-	  "TODO": "ensure regex"
+          "TODO": "ensure regex"
         },
         "min": {
           "type": "number",
@@ -70,12 +70,12 @@
         },
         "max": {
           "type": "number",
-          "description": "The maximum value. null for no limit."
+          "description": "The maximum value. null for no limit.",
+          "minimum": { "$data": "1/min" }
         }
       },
       "required": ["type", "name", "required", "null_or_empty", "regex"],
-      "additionalProperties": false,
-      "TODO": "min <= max"
+      "additionalProperties": false
     },
     "decimal": {
       "type": "object",
@@ -88,7 +88,7 @@
         "regex": {
           "type": "string",
           "description": "Regular expression to validate the column value.",
-	  "TODO": "ensure regex"
+          "TODO": "ensure regex"
         },
         "min": {
           "type": "number",
@@ -96,17 +96,17 @@
         },
         "max": {
           "type": "number",
-          "description": "The maximum value. null for no limit."
+          "description": "The maximum value. null for no limit.",
+          "minimum": { "$data": "1/min" }
         },
         "precision": {
           "type": "number",
           "description": "The decimal point precision.",
-	  "TODO": ">=1"
+          "minimum": 1
         }
       },
       "required": ["type", "name", "required", "null_or_empty", "precision"],
-      "additionalProperties": false,
-      "TODO": "min <= max"
+      "additionalProperties": false
     },
     "enum": {
       "type": "object",
@@ -119,12 +119,12 @@
         "values": {
           "type": "array",
           "description": "Fixed set of constants.",
-          "items": {"TODO"}
+          "items": {"TODO"},
+          "minItems": 1
         }
       },
       "required": ["type", "name", "required", "null_or_empty", "values"],
-      "additionalProperties": false,
-      "TODO": "len > 0"
+      "additionalProperties": false
     }
   },
   "type": "object",
@@ -144,7 +144,7 @@
         "regex": {
           "type": "string",
           "description": "Regular expression to validate the name of the CSV file being validated.",
-	  "TODO": "ensure regex (not in original)"
+          "TODO": "ensure regex (not in original)"
         }
       }
     },
@@ -160,7 +160,7 @@
           { "$ref": "#/definitions/enum" }
         ]
       },
-      "TODO": "len > 0"
+      "minItems": 1
     }
   },
   "required": ["TODO"]
